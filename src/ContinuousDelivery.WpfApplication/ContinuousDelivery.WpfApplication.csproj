@@ -22,7 +22,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\buildartifacts\Debug\ContinuousDelivery.WpfApplication\</OutputPath>
+    <OutputPath>..\..\build_artifacts\Debug\ContinuousDelivery.WpfApplication\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
