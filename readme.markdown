@@ -1,3 +1,3 @@
-Continuous Delivery#
+Continuous Delivery
 --
-This will eventually show an example of conitnuous delivery with Psake and TeamCity.
+This project will support a blog series about continuous delivery with Psake and TeamCity.
