@@ -37,3 +37,4 @@ buildartifacts/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
+*vshost*
