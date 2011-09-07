@@ -26,5 +26,6 @@ task test {
 	$testassemblies = get-childitem $test_dir -recurse -include *tests*.dll
 	exec { 
 		& $tools_dir\NUnit-2.5.10\nunit-console-x86.exe $testassemblies /nologo /nodots /xml=$test_dir\tests_results.xml; 
+		Write-Output "##teamcity[importData type='nunit' path=`'$test_dir\tests_results.xml`']"
 	}
 }
