@@ -6,7 +6,7 @@ properties {
 	$build_artifacts_dir = "$base_dir\build_artifacts"
 	$tools_dir = "$base_dir\tools"
 	$config = "Debug"
-	$test_dir = "$build_artifacts_dir\$config\Tests"
+	$test_dir = "$build_artifacts_dir\$config\tests"
 }
 
 task default -depends local
@@ -26,6 +26,6 @@ task test {
 	$testassemblies = get-childitem $test_dir -recurse -include *tests*.dll
 	exec { 
 		& $tools_dir\NUnit-2.5.10\nunit-console-x86.exe $testassemblies /nologo /nodots /xml=$test_dir\tests_results.xml; 
-		Write-Output "##teamcity[importData type='nunit' path=`'buildartifacts\Tests\tests_results.xml`']"
+		Write-Output "##teamcity[importData type='nunit' path=`'$test_dir\tests_results.xml`']"
 	}
 }
