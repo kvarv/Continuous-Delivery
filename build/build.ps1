@@ -13,6 +13,8 @@ task default -depends local
  
 task local -depends compile, test
 
+task ci -depends compile, test
+
 task compile -depends clean {
 	exec { msbuild  $source_dir\ContinuousDelivery.sln /t:Clean /t:Build /p:Configuration=$config /v:q /nologo }
 }
