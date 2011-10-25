@@ -31,3 +31,7 @@ task test {
 		Write-Output "##teamcity[importData type='nunit' path=`'$test_dir\tests_results.xml`']"
 	}
 }
+
+task deploy {
+    Write-Output "deploying to test!"
+}
