@@ -41,6 +41,6 @@ task deploy -depends set_build_number{
 }
 
 task set_build_number {
-	$script:build_no = get-content "$base_dir\build.number"
+	$script:build_no = get-content "$build_artifacts_dir\build.number"
 	TeamCity-SetBuildNumber $script:build_no
 }
