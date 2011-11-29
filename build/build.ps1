@@ -13,7 +13,7 @@ task default -depends local
  
 task local -depends compile, test
 
-task ci -depends compile, test
+task ci -depends compile, test, create_build_number_file
 
 task compile -depends clean {
 	exec { msbuild  $source_dir\ContinuousDelivery.sln /t:Clean /t:Build /p:Configuration=$config /v:q /nologo }
@@ -32,6 +32,15 @@ task test {
 	}
 }
 
-task deploy {
+task create_build_number_file {
+	"$env:build_number"  | out-file "$base_dir\build.version" -encoding "ASCII" -force  
+}
+
+task deploy -depends set_build_number{
     Write-Output "deploying to test!"
+}
+
+task set_build_number {
+	$script:build_no = get-content "$base_dir\build.version"
+	TeamCity-SetBuildNumber $script:build_no
 }
