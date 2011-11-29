@@ -9,6 +9,8 @@ properties {
 	$test_dir = "$build_artifacts_dir\$config\tests"
 }
 
+include .\..\tools\psake\teamcity.ps1
+
 task default -depends local
  
 task local -depends compile, test
