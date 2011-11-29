@@ -33,7 +33,7 @@ task test {
 }
 
 task create_build_number_file {
-	"$env:build_number"  | out-file "$base_dir\build.version" -encoding "ASCII" -force  
+	"$env:build_number"  | out-file "$base_dir\build.number" -encoding "ASCII" -force  
 }
 
 task deploy -depends set_build_number{
@@ -41,6 +41,6 @@ task deploy -depends set_build_number{
 }
 
 task set_build_number {
-	$script:build_no = get-content "$base_dir\build.version"
+	$script:build_no = get-content "$base_dir\build.number"
 	TeamCity-SetBuildNumber $script:build_no
 }
