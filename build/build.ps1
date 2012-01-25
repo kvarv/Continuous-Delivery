@@ -2,11 +2,15 @@ $framework = '4.0'
 
 properties {
 	$base_dir = resolve-path .\..
+	$build_dir = "$base_dir\build"
+	$properties_dir = "$build_dir\properties"
 	$source_dir = "$base_dir\src"
 	$build_artifacts_dir = "$base_dir\build_artifacts"
 	$tools_dir = "$base_dir\tools"
 	$config = "Debug"
 	$test_dir = "$build_artifacts_dir\$config\tests"
+	
+	. "$properties_dir\$env.ps1"
 }
 
 include .\..\tools\psake\teamcity.ps1
@@ -19,6 +23,7 @@ task ci -depends compile, test, create_build_number_file
 
 task compile -depends clean {
 	exec { msbuild  $source_dir\ContinuousDelivery.sln /t:Clean /t:Build /p:Configuration=$config /v:q /nologo }
+	Write-Output "Integrating database changes for $env at $database_server"
 }
 
 task clean {
@@ -39,7 +44,7 @@ task create_build_number_file {
 }
 
 task deploy -depends set_build_number{
-    Write-Output "deploying to test!"
+	Write-Output "deploying to $env => database is deployed to $database_server"
 }
 
 task set_build_number {
