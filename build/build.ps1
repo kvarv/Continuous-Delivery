@@ -44,6 +44,5 @@ task deploy -depends set_build_number{
 }
 
 task set_build_number {
-	Write-Output "$build_number is the build number"
 	TeamCity-SetBuildNumber $build_number
 }
