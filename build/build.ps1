@@ -24,6 +24,7 @@ task ci -depends compile, test
 task compile -depends clean {
 	exec { msbuild  $source_dir\ContinuousDelivery.sln /t:Clean /t:Build /p:Configuration=$config /v:q /nologo }
 	Write-Output "Integrating database changes for $env at $database_server"
+	$build_number
 }
 
 task clean {
@@ -44,6 +45,5 @@ task deploy -depends set_build_number{
 }
 
 task set_build_number {
-	$build_number = get-content "$build_artifacts_dir\build.number"
 	TeamCity-SetBuildNumber $build_number
 }
