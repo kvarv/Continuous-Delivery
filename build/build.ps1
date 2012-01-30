@@ -19,7 +19,7 @@ task default -depends local
  
 task local -depends compile, test
 
-task ci -depends compile, test, create_build_number_file
+task ci -depends compile, test
 
 task compile -depends clean {
 	exec { msbuild  $source_dir\ContinuousDelivery.sln /t:Clean /t:Build /p:Configuration=$config /v:q /nologo }
@@ -39,15 +39,11 @@ task test {
 	}
 }
 
-task create_build_number_file {
-	"$env:build_number"  | out-file "$base_dir\build.number" -encoding "ASCII" -force  
-}
-
 task deploy -depends set_build_number{
 	Write-Output "deploying to $env => database is deployed to $database_server"
 }
 
 task set_build_number {
-	$script:build_no = get-content "$build_artifacts_dir\build.number"
-	TeamCity-SetBuildNumber $script:build_no
+	$build_number = get-content "$build_artifacts_dir\build.number"
+	TeamCity-SetBuildNumber $build_number
 }
