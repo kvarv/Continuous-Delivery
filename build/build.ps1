@@ -3,12 +3,13 @@ $framework = '4.0'
 properties {
 	$base_dir = resolve-path .\..
 	$build_dir = "$base_dir\build"
+	$configs_dir = "$build_dir\configs"
 	$properties_dir = "$build_dir\properties"
 	$source_dir = "$base_dir\src"
 	$build_artifacts_dir = "$base_dir\build_artifacts"
 	$tools_dir = "$base_dir\tools"
-	$config = "Debug"
-	$test_dir = "$build_artifacts_dir\$config\tests"
+	$configuration = "Debug"
+	$test_dir = "$build_artifacts_dir\$configuration\tests"
 	
 	. "$properties_dir\$env.ps1"
 }
@@ -22,7 +23,7 @@ task local -depends compile, test
 task ci -depends compile, test
 
 task compile -depends clean {
-	exec { msbuild  $source_dir\ContinuousDelivery.sln /t:Clean /t:Build /p:Configuration=$config /v:q /nologo }
+	exec { msbuild  $source_dir\ContinuousDelivery.sln /t:Clean /t:Build /p:Configuration=$configuration /v:q /nologo }
 	Write-Output "Integrating database changes for $env at $database_server"
 }
 

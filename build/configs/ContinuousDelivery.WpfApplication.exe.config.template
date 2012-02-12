@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<configuration>
+  <connectionStrings>
+    <add name="database" connectionString="#{database_connection_string}"/>
+  </connectionStrings>
+</configuration>
