@@ -7,7 +7,7 @@ task default -depends deploy
 
 task deploy -depends set_build_number{
 	Write-Output "deploying to $env => database is deployed to $database_server"
-    $app_path = "$build_artifacts_dir\Debug\ContinuousDelivery.WpfApplication"
+    $app_path = "$build_artifacts_dir\ContinuousDelivery.WpfApplication"
     $config_file = "ContinuousDelivery.WpfApplication.exe.config"
     replace_tokens $app_config_data "$configs_dir\$config_file.template" "$app_path\$config_file"
 }
