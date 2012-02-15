@@ -3,7 +3,7 @@ $framework = '4.0'
 include .\..\tools\psake\teamcity.ps1
 include .\..\tools\Replace-Tokens\Replace-Tokens.ps1
 
-task default -depends deploy
+task default -depends deploy 
 
 task deploy -depends set_build_number, migrate_database {
     $app_path = "$build_artifacts_dir\ContinuousDelivery.WpfApplication"
