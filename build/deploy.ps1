@@ -17,5 +17,5 @@ task set_build_number {
 }
 
 task migrate_database {
-    exec { & $tools_dir\RoundhousE\rh.exe /s=$database_server /d=$database_name /f=$database_dir /silent} 
+    exec { & $tools_dir\RoundhousE\rh.exe /s=$database_server /d=$database_name /f=$database_dir /t /silent} 
 }

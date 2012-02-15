@@ -1,5 +1,4 @@
 $database_server = "(local)"
-
 $database_name = "ContinuousDelivery_acceptance_test"
 
 $app_config_data = @{

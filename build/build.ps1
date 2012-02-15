@@ -8,7 +8,6 @@ properties {
 	$source_dir = "$base_dir\src"
 	$build_artifacts_dir = "$base_dir\build_artifacts"
 	$tools_dir = "$base_dir\tools"
-	$configuration = "Debug"
 	$test_dir = "$build_artifacts_dir\tests"
 	
 	. "$properties_dir\$env.ps1"
@@ -25,7 +24,7 @@ task local -depends recreate_database, compile, test
 task ci -depends recreate_database, compile, test
 
 task compile -depends clean {
-	exec { msbuild  $source_dir\ContinuousDelivery.sln /t:Clean /t:Build /p:Configuration=$configuration /v:q /nologo }
+	exec { msbuild  $source_dir\ContinuousDelivery.sln /t:Clean /t:Build /p:Configuration=$build_configuration /v:q /nologo }
 	Write-Output "Integrating database changes for $env at $database_server"
 }
 
