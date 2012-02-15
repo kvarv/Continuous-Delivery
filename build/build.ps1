@@ -14,12 +14,13 @@ properties {
 }
 
 include .\..\tools\psake\teamcity.ps1
+include .\modules\functions.ps1
 
 task default -depends local
  
 task local -depends recreate_database, compile, test
 
-task ci -depends recreate_database, compile, test
+task ci -depends recreate_database, create_common_assembly_info, compile, test
 
 task compile -depends clean {
 	exec { msbuild  $source_dir\ContinuousDelivery.sln /t:Clean /t:Build /p:Configuration=$build_configuration /v:q /nologo }
@@ -50,4 +51,8 @@ task drop_database {
 
 task deploy {
 	invoke-psake .\deploy.ps1 -properties $properties -parameters $parameters
+}
+
+task create_common_assembly_info {
+	create_common_assembly_info $build_number "$source_dir\ContinuousDelivery.WpfApplication\CommonAssemblyInfo.cs"
 }
