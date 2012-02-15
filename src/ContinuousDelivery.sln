@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContinuousDelivery.WpfAppli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContinuousDelivery.WpfApplication.Tests", "ContinuousDelivery.WpfApplication.Tests\ContinuousDelivery.WpfApplication.Tests.csproj", "{4120C607-1EF2-4174-934F-C9B4D94A2AE8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContinuousDelivery", "ContinuousDelivery\ContinuousDelivery.csproj", "{DEA9698B-3D13-4035-8C25-0059312F2B50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,16 @@ Global
 		{4120C607-1EF2-4174-934F-C9B4D94A2AE8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{4120C607-1EF2-4174-934F-C9B4D94A2AE8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4120C607-1EF2-4174-934F-C9B4D94A2AE8}.Release|x86.ActiveCfg = Release|Any CPU
+		{DEA9698B-3D13-4035-8C25-0059312F2B50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEA9698B-3D13-4035-8C25-0059312F2B50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEA9698B-3D13-4035-8C25-0059312F2B50}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{DEA9698B-3D13-4035-8C25-0059312F2B50}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DEA9698B-3D13-4035-8C25-0059312F2B50}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DEA9698B-3D13-4035-8C25-0059312F2B50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEA9698B-3D13-4035-8C25-0059312F2B50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEA9698B-3D13-4035-8C25-0059312F2B50}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{DEA9698B-3D13-4035-8C25-0059312F2B50}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{DEA9698B-3D13-4035-8C25-0059312F2B50}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

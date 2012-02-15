@@ -10,6 +10,7 @@ properties {
 	$tools_dir = "$base_dir\tools"
 	$test_dir = "$build_artifacts_dir\tests"
 	$database_dir = "$base_dir\database"
+	$database_version_dll = "$build_artifacts_dir\ContinuousDelivery.WpfApplication\ContinuousDelivery.dll"
 	. "$properties_dir\$env.ps1"
 }
 
@@ -18,9 +19,9 @@ include .\modules\functions.ps1
 
 task default -depends local
  
-task local -depends recreate_database, compile, test
+task local -depends compile, recreate_database, test
 
-task ci -depends recreate_database, create_common_assembly_info, compile, test
+task ci -depends create_common_assembly_info, compile, recreate_database, test
 
 task compile -depends clean {
 	exec { msbuild  $source_dir\ContinuousDelivery.sln /t:Clean /t:Build /p:Configuration=$build_configuration /v:q /nologo }
@@ -40,7 +41,8 @@ task test {
 }
 
 task update_database {
-	exec { & $tools_dir\RoundhousE\rh.exe /s=$database_server /d=$database_name /f=$database_dir /silent} 
+	exec { & $tools_dir\RoundhousE\rh.exe /s=$database_server /d=$database_name /f=$database_dir /vf=$database_version_dll /silent}
+	$database_version_dll 
 }
 
 task recreate_database -depends drop_database, update_database
