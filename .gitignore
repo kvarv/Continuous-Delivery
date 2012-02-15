@@ -38,3 +38,4 @@ buildartifacts/
 _ReSharper*/
 [Tt]est[Rr]esult*
 *vshost*
+build_artifacts

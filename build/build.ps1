@@ -9,18 +9,20 @@ properties {
 	$build_artifacts_dir = "$base_dir\build_artifacts"
 	$tools_dir = "$base_dir\tools"
 	$configuration = "Debug"
-	$test_dir = "$build_artifacts_dir\$configuration\tests"
+	$test_dir = "$build_artifacts_dir\tests"
 	
 	. "$properties_dir\$env.ps1"
+
+	$database_dir = "$base_dir\database"
 }
 
 include .\..\tools\psake\teamcity.ps1
 
 task default -depends local
  
-task local -depends compile, test
+task local -depends recreate_database, compile, test
 
-task ci -depends compile, test
+task ci -depends recreate_database, compile, test
 
 task compile -depends clean {
 	exec { msbuild  $source_dir\ContinuousDelivery.sln /t:Clean /t:Build /p:Configuration=$configuration /v:q /nologo }
@@ -38,6 +40,16 @@ task test {
 		& $tools_dir\NUnit-2.5.10\nunit-console-x86.exe $testassemblies /nologo /nodots /xml=$test_dir\tests_results.xml; 
 		Write-Output "##teamcity[importData type='nunit' path=`'$test_dir\tests_results.xml`']"
 	}
+}
+
+task update_database {
+	exec { & $tools_dir\RoundhousE\rh.exe /s=$database_server /d=$database_name /f=$database_dir /silent} 
+}
+
+task recreate_database -depends drop_database, update_database
+
+task drop_database {
+	exec { & $tools_dir\RoundhousE\rh.exe /s=$database_server /d=$database_name /drop /silent} 
 }
 
 task deploy {
