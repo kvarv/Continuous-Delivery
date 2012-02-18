@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+<Target Name="Install">
+    <GenerateDeploymentManifest AssemblyName="$(ApplicationName) $(Env)"
+                                AssemblyVersion="$(Version)"
+				MinimumRequiredVersion="$(Version)"
+                                DeploymentUrl="$(DeploymentUrl)\$(ApplicationFile)"
+                                Product="$(ApplicationName) $(Env)"
+                                Publisher="Midas Data"
+                                EntryPoint="$(ClickOnceDir)\$(ManifestFile)"
+                                Install="True"
+                                UpdateEnabled="True"
+                                UpdateMode="Foreground"
+                                OutputManifest="$(ClickOnceDir)\$(ApplicationFile)"
+                                TrustUrlParameters="False"
+                                MapFileExtensions="True"
+				Platform="x86"
+                                TargetFrameworkMoniker=".NETFramework,Version=v4.0"
+								/>
+  </Target>
+  
+  <Target Name="NoInstall">
+    <GenerateDeploymentManifest AssemblyName="$(ApplicationName) $(Env)"
+                                AssemblyVersion="$(Version)"
+                                DeploymentUrl="$(DeploymentUrl)\$(ApplicationFile)"
+                                Product="$(ApplicationName) $(Env)"
+                                Publisher="Midas Data"
+                                EntryPoint="$(ClickOnceDir)\$(ManifestFile)"
+                                OutputManifest="$(ClickOnceDir)\$(ApplicationFile)"
+	                        Install="False"
+                                TrustUrlParameters="False"
+                                MapFileExtensions="True"
+				Platform="x86"
+                                TargetFrameworkMoniker=".NETFramework,Version=v4.0"
+								/>
+  </Target>
+</Project>
