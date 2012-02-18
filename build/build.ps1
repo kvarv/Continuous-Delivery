@@ -9,7 +9,8 @@ properties {
 	$build_artifacts_dir = "$base_dir\build_artifacts"
 	$tools_dir = "$base_dir\tools"
 	$test_dir = "$build_artifacts_dir\tests"
-	$database_dir = "$base_dir\database"
+	$database_src_dir = "$base_dir\database"
+	$database_dir = "$build_artifacts_dir\database"
 	$database_version_dll = "$build_artifacts_dir\ContinuousDelivery.WpfApplication\ContinuousDelivery.dll"
 	. "$properties_dir\$env.ps1"
 }
@@ -40,7 +41,7 @@ task test {
 }
 
 task copy_database_scripts_to_build_artifacts {
-	copy_files $database_dir "$build_artifacts_dir\database"
+	copy_files $database_src_dir $database_dir
 }
 
 task update_database -depends copy_database_scripts_to_build_artifacts {
