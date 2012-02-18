@@ -13,7 +13,6 @@ properties {
 	$database_version_dll = "$build_artifacts_dir\ContinuousDelivery.WpfApplication\ContinuousDelivery.dll"
 	. "$properties_dir\$env.ps1"
 }
-
 include .\..\tools\psake\teamcity.ps1
 include .\modules\functions.ps1
 
@@ -40,7 +39,11 @@ task test {
 	}
 }
 
-task update_database {
+task copy_database_scripts_to_build_artifacts {
+	copy_files $database_dir "$build_artifacts_dir\database"
+}
+
+task update_database -depends copy_database_scripts_to_build_artifacts {
 	exec { & $tools_dir\RoundhousE\rh.exe /s=$database_server /d=$database_name /f=$database_dir /vf=$database_version_dll /silent}
 	$database_version_dll 
 }
