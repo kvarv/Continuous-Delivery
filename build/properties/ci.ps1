@@ -1,5 +1,5 @@
 $build_configuration = "Release"
-$database_server = "(local)"
+$database_server = "localhost"
 $database_name = "ContinuousDelivery_ci"
 $deployment_url = "C:\ContinuousDelivery"
 

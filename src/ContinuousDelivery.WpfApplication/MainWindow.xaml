@@ -1,7 +1,7 @@
 ﻿<Window x:Class="ContinuousDelivery.WpfApplication.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Continuous Delivery" Height="350" Width="525">
     <StackPanel>
         <TextBlock Margin="5" Name="connectionDetails" FontSize="14"/>
         <TextBlock Margin="5" Name="assemblyVersion" FontSize="14"/>

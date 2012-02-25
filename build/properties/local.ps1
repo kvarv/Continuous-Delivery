@@ -1,5 +1,5 @@
 $build_configuration = "Debug"
-$database_server = "(local)"
+$database_server = "localhost"
 $database_name = "ContinuousDelivery_local"
 $deployment_url = "C:\ContinuousDelivery"
 

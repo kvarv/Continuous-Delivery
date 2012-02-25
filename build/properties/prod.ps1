@@ -1,4 +1,4 @@
-$database_server = "(local)"
+$database_server = "localhost"
 $database_name = "ContinuousDelivery_prod"
 $deployment_url = "C:\ContinuousDelivery"
 
