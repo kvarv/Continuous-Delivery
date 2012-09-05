@@ -7,7 +7,7 @@
 				MinimumRequiredVersion="$(Version)"
                                 DeploymentUrl="$(DeploymentUrl)\$(ApplicationFile)"
                                 Product="$(ApplicationName) $(Env)"
-                                Publisher="Midas Data"
+                                Publisher="Gøran Kvarv"
                                 EntryPoint="$(ClickOnceDir)\$(ManifestFile)"
                                 Install="True"
                                 UpdateEnabled="True"
@@ -15,7 +15,7 @@
                                 OutputManifest="$(ClickOnceDir)\$(ApplicationFile)"
                                 TrustUrlParameters="False"
                                 MapFileExtensions="True"
-				Platform="x86"
+				                Platform="x86"
                                 TargetFrameworkMoniker=".NETFramework,Version=v4.0"
 								/>
   </Target>
@@ -25,13 +25,13 @@
                                 AssemblyVersion="$(Version)"
                                 DeploymentUrl="$(DeploymentUrl)\$(ApplicationFile)"
                                 Product="$(ApplicationName) $(Env)"
-                                Publisher="Midas Data"
+                                Publisher="Gøran Kvarv"
                                 EntryPoint="$(ClickOnceDir)\$(ManifestFile)"
                                 OutputManifest="$(ClickOnceDir)\$(ApplicationFile)"
-	                        Install="False"
+                                Install="False"
                                 TrustUrlParameters="False"
                                 MapFileExtensions="True"
-				Platform="x86"
+				                Platform="x86"
                                 TargetFrameworkMoniker=".NETFramework,Version=v4.0"
 								/>
   </Target>
